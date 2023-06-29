@@ -5,6 +5,7 @@ applied Transformer and NLP model for text_classification and prediction
 The main goal of this project is for NLP model implementation with the data get from the websites.
 
 #Crawler
+
 This Python script is a multi-threaded web scraper that extracts and processes story data from the website 'www.xigushi.com'. The specific story data it extracts includes categories, titles, content, and word counts. The story data are distributed across various categories such as humor, children, love, career, inspiration, philosophy, campus, life, fable, famous people, family love, and friendship.
 
 The script performs the following tasks:
