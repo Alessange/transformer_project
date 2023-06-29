@@ -32,4 +32,10 @@ Model definition: The script defines a neural network model that uses a pre-trai
 
 Training: Finally, the script trains this model using the AdamW optimizer and the cross-entropy loss function. It loops over the DataLoader, passes the data through the model, computes the loss, and backpropagates the gradients to update the model's weights. It also computes the training accuracy every 15 steps and prints it out along with the loss.
 
+_If you wish to save the model locally, try the code after the training loop_
+
+```ruby
+torch.save(model.state_dict(), "/path/to/save/bert_model_category.pth")
+```
+
 Note: In the training loop, the gradients of the pre-trained BERT model's parameters are not updated (they are "frozen") - only the weights of the final Linear layer are learned from scratch. This is a common approach when doing transfer learning, where we use a model pre-trained on a large dataset (in this case, BERT) and fine-tune it on a smaller, specific task (here, the story classification task).
