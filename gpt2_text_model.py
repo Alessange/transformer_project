@@ -13,7 +13,7 @@ model = GPT2LMHeadModel.from_pretrained("gpt2-large")
 for param in model.parameters():
     param.requires_grad = False
 
-# Unfreeze the last transformer layer for fine-tuning
+# Unfreeze the last 3 transformer layer for fine-tuning
 for param in model.transformer.h[-3].parameters():
     param.requires_grad = True
 
