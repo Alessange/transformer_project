@@ -40,15 +40,21 @@ torch.save(model.state_dict(), "/path/to/save/bert_model_category.pth")
 During the training loop, the gradients of the pre-trained BERT model's parameters are not updated (they are "frozen"). Only the weights of the final Linear layer are learned from scratch. This is a common approach in transfer learning, where we use a model pre-trained on a large dataset (in this case, BERT) and fine-tune it on a smaller, specific task (here, the story classification task).
 
 
-# gpt2_text_model.py
-This script fine-tunes a GPT-2 model with custom data, which should be in the form of a list of text stories. These stories are read into the script, tokenized, and used to create a TextDataset object. The data collator function prepares samples for the model.
+# last_gpt2.py
+The code is a script for fine-tuning the GPT-2 model(Chinese base) on a custom dataset using the SophiaG optimizer. It trains the model for a specified number of epochs and saves the trained model.
 
-The TrainingArguments object sets the training configuration parameters like the output directory, number of epochs, batch size, and save steps.
+The GPT-2 Fine-tuning with SophiaG Optimizer project provides a framework for fine-tuning the GPT-2 language model(Chinese base) on a custom dataset using the SophiaG optimizer. By leveraging the SophiaG optimizer's enhancements, this project aims to improve the training performance of GPT-2 models. It includes code for preparing the dataset, initializing the model and tokenizer, defining the training settings, and conducting the fine-tuning process. The resulting fine-tuned model can be used for various natural language processing tasks, such as text generation and language understanding. The project also provides a script for generating text using the trained model. With the flexibility of the MIT License, users are free to use, modify, and distribute the code according to their needs. This project builds upon the popular Transformers library by Hugging Face and acknowledges the contributions of the open-source community. It offers an accessible and customizable solution for those interested in exploring and improving GPT-2 models.
 
-A Trainer object is created by passing the model, training arguments, data collator, and dataset to it. This Trainer object trains the model.
+For more information on optimizer SophiaG, please see the [link](https://github.com/Liuhong99/Sophia)
 
-Once the training is complete, the script saves the model. This fine-tuned model is then ready for use in generating new stories.
+# text_generate.py
+The code snippet demonstrates how to use the fine-tuned GPT-2 model for text generation. The GPT-2 model and tokenizer are loaded from the specified paths. The TextGenerationPipeline is then created, utilizing the model and tokenizer, to generate text based on user input. The generated text is printed to the console.
 
+To use the code, simply run the script and provide a keyword as input when prompted. The model will generate text based on the provided keyword.
+
+This code provides a practical example of using a fine-tuned GPT-2 model for text generation tasks. It can be extended and customized for various applications, such as chatbots, creative writing, or content generation. Feel free to modify and adapt the code to suit your specific needs.
+
+Please note that you need to replace the model path ""(/home/sxhuang/gpt2_new_last)"" with the actual path to your fine-tuned GPT-2 model.
 
 # NBCE_decode.py
 This script takes a starting sentence (prompt) and generates a story using the fine-tuned GPT-2 model.
@@ -58,4 +64,6 @@ The script starts by loading the fine-tuned GPT-2 model and its associated token
 It then requests an input prompt from the user. This prompt is encoded into a format suitable for the model. The encoded prompt is then passed to the model, which generates a sequence of tokens in response.
 
 The encoding part is improved by a method named NBCE(Naive Bayes-based Context Extension), developed by 苏建林. More detail can be found [苏剑林. (May. 23, 2023). 《NBCE：使用朴素贝叶斯扩展LLM的Context处理长度 》](https://kexue.fm/archives/9617)
+
+
 
